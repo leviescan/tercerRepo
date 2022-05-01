@@ -1,0 +1,32 @@
+
+<div class="container is-fluid">
+    <div class=" ">
+      <div class="columns ">
+        <div class="column  ">
+          
+          
+            <div class="title is-6">
+              <div >
+               
+                {{indiceDL+1}}:{{empleadoDlista.nombre}} {{empleadoDlista.apellido}} {{empleadoDlista.cargo}} {{empleadoDlista.salario}}
+                <span>
+                  <i class="person-circle-outline"></i>
+                </span>
+                <a [routerLink]="['/actualizar',indiceDL]" [queryParams]="{accion:'0'}">
+                  actualizar
+              </a>
+                   &nbsp;
+              <a [routerLink]="['/actualizar',indiceDL]" [queryParams]="{accion:'1'}">
+                Eliminar
+            </a>
+
+            </div>
+            <app-caractersticas-usuario (newCaracteristica)="addCaracteristic($event)"></app-caractersticas-usuario>
+<ul>
+  <li *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}}</li>
+</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
