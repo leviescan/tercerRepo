@@ -7,26 +7,66 @@
           
             <div class="title is-6">
               <div >
+
+                <table class="table table is-bordered is-striped table is-hoverable">
+                  <thead>
+                   
+                    <tr>
+                      <th>id</th>
+                      <th>nombre</th>
+                      <th>apellido</th>
+                      <th>cargo</th>
+                      <th>salario</th>
+                      <th>actualizar</th>
+                      <th>Eliminar</th>
+                      <th>caracteristica</th>
+              
+              
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <app-caractersticas-usuario (newCaracteristica)="addCaracteristic($event)"></app-caractersticas-usuario>
+
+                  </tfoot>
+                  <tbody>
+              
+              
+                    <tr>
+                      <th>{{indiceDL+1}}:</th>
+                      
+                      <td>{{empleadoDlista.nombre}}</td>
+                      <td>{{empleadoDlista.apellido}}</td>
+                      <td>{{empleadoDlista.cargo}}</td>
+                      <td>{{empleadoDlista.salario}}</td>
+                      <td> <a [routerLink]="['/actualizar',indiceDL]" [queryParams]="{accion:'0'}">
+                        actualizar
+                    </a></td>
+                      <td><a [routerLink]="['/actualizar',indiceDL]" [queryParams]="{accion:'1'}">
+                        Eliminar
+                    </a> </td>
+                       <td> <a *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}}</a> </td>
+              
+                    </tr>
+                   
+                    
+              
+                  </tbody>
+                </table>
                
-                {{indiceDL+1}}:{{empleadoDlista.nombre}} {{empleadoDlista.apellido}} {{empleadoDlista.cargo}} {{empleadoDlista.salario}}
-                <span>
-                  <i class="person-circle-outline"></i>
-                </span>
-                <a [routerLink]="['/actualizar',indiceDL]" [queryParams]="{accion:'0'}">
-                  actualizar
-              </a>
-                   &nbsp;
-              <a [routerLink]="['/actualizar',indiceDL]" [queryParams]="{accion:'1'}">
-                Eliminar
-            </a>
+                   
+                
+              
 
             </div>
-            <app-caractersticas-usuario (newCaracteristica)="addCaracteristic($event)"></app-caractersticas-usuario>
-<ul>
-  <li *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}}</li>
-</ul>
+
           </div>
         </div>
       </div>
     </div>
   </div>
+
+
+  
+  
+
+  

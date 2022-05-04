@@ -1,3 +1,4 @@
+import { DataServicesService } from './data-services.service';
 import { PrimerServicioService } from './primer-servicio.service';
 import { Injectable } from '@angular/core';
 import { Empleado } from './usuario.model';
@@ -20,6 +21,8 @@ export class ServicioDatosService {
     'salrio.'+ empleadoService.salario);
 
     this.empleadoDatos.push(empleadoService);
+
+    this.datosaguardar.saveUser(this.empleadoDatos);
 
   }
 
@@ -49,5 +52,5 @@ export class ServicioDatosService {
 
   }
 
-  constructor(private servicioVentana:PrimerServicioService) { }
+  constructor(private servicioVentana:PrimerServicioService, private datosaguardar:DataServicesService) { }
 }
