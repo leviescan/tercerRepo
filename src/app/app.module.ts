@@ -1,3 +1,4 @@
+import { DataServicesService } from './data-services.service';
 import { Routes, RouterModule } from '@angular/router';
 import { ServicioDatosService } from './servicio-datos.service';
 import { PrimerServicioService } from './primer-servicio.service';
@@ -16,13 +17,16 @@ import { ProyectosComponent } from './proyectos/proyectos.component';
 import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { ActualizarComponent } from './actualizar/actualizar.component';
+import { PaginaErrorComponent } from './pagina-error/pagina-error.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const AppRoutes:Routes=[
    { path:'',component:HomeComponent},
    { path:'proyectos', component:ProyectosComponent},
    { path:'quienesSomos', component:QuienesSomosComponent},
    { path:'contactos', component:ContactosComponent},
-   { path:'actualizar/:id', component:ActualizarComponent}
+   { path:'actualizar/:id', component:ActualizarComponent},
+   { path:'**', component:PaginaErrorComponent}
 ]
 
 @NgModule({
@@ -34,19 +38,21 @@ const AppRoutes:Routes=[
     ProyectosComponent,
     QuienesSomosComponent,
     ContactosComponent,
-    ActualizarComponent
+    ActualizarComponent,
+    PaginaErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(AppRoutes),
-    
+    HttpClientModule,
     FormsModule,
     
     
     
+    
   ],
-  providers: [PrimerServicioService, ServicioDatosService], /*aqui se tiene que declarar el servicio*/
+  providers: [PrimerServicioService, ServicioDatosService, DataServicesService ], /*aqui se tiene que declarar el servicio*/
   bootstrap: [AppComponent]
 })
 export class AppModule { }
